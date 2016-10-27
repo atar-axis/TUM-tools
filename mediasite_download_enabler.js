@@ -3,7 +3,7 @@
 // @name        mediasite tum downloader
 // @namespace   wireless
 // @include     http://streams.tum.de/Mediasite/*
-// @version     1
+// @version     1.2
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant    GM_addStyle
@@ -25,6 +25,7 @@ function addGlobalStyle(css) {
     head.appendChild(style);
 }
 
+// Platziert den Download-Button neben den Info und Watch Buttons
 function placeButton(panel, vid_location, title){
 
     var dwnlink = document.createElement('a');
@@ -41,7 +42,8 @@ function placeButton(panel, vid_location, title){
 
 }
 
-
+// Sendet die HTTP Anfrage an den Mediasite-Server und wertet die Antwort aus,
+// in welcher sich der Speicherort der Mediendateien befindet
 function modify (i) {
 
     var panels = document.getElementsByClassName("tdPresentationDetails");
@@ -71,8 +73,7 @@ function modify (i) {
 
         http.open("POST", url, true);
         http.setRequestHeader("Content-type", "application/json");
-        http.setRequestHeader("Content-length", params.length);
-        http.setRequestHeader("Connection", "keep-alive");
+
         http.onreadystatechange = function() {
 
             if(http.readyState == 4 && http.status == 200) {
@@ -106,9 +107,12 @@ function modify (i) {
 
 
 
-
-                placeButton(panels[i], vid_location.pop(), "Download 1");
-                placeButton(panels[i], vid_location.pop(), "Download 2");
+                for(var l = 0; l < vid_location.length; l++){
+                    placeButton(panels[i], vid_location[l], "Download "+l);
+                }
+                
+                
+                // Rufe diese Funktion erneut für den nächsten Eintrag auf.
                 modify(++i);
 
             }
@@ -118,14 +122,16 @@ function modify (i) {
 
     } else {
 
-        alert("Links are ready");
+        alert("Links ready");
         document.querySelector('#SearchResults').setAttribute('data-wasActive', 1);
 
     }
 
 }
 
-
+// Erzeugt den Button zur Erzeugung der Downloadlinks
+// Nicht automatisiert, da die Abfrage bisher viel Zeit benötigt und nur
+// dann ausgeführt werden soll, wenn nötig
 function create_downloads(){
 
     var dwn_creator = document.createElement('a');
@@ -152,6 +158,5 @@ function create_downloads(){
 
 
 }
-
 
 waitForKeyElements (".cardDataListStyle", create_downloads, true);
