@@ -3,7 +3,8 @@
 // @name        mediasite tum downloader
 // @namespace   wireless
 // @include     http://streams.tum.de/Mediasite/*
-// @version     1.2
+// @include     https://streams.tum.de/Mediasite/*
+// @version     1
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant    GM_addStyle
@@ -11,9 +12,7 @@
 
 // Visit the Mediasite Website via the HTTP (not the HTTPS) link!
 // Modifiy the following string to fit your needs:
-ref = 'https://streams.tum.de/Mediasite/Catalog/catalogs/analysis-2016';
-
-
+ref = location.protocol+'//streams.tum.de/Mediasite/Catalog/catalogs/analysis-2016';
 
 function addGlobalStyle(css) {
     var head, style;
@@ -68,7 +67,7 @@ function modify (i) {
 
         // prepare request
         http = new XMLHttpRequest();
-        url = "http://streams.tum.de/Mediasite/PlayerService/PlayerService.svc/json/GetPlayerOptions";
+        url = location.protocol+"//streams.tum.de/Mediasite/PlayerService/PlayerService.svc/json/GetPlayerOptions";
         vid_location = [];
 
         http.open("POST", url, true);
