@@ -5,7 +5,7 @@
 // @include     http://streams.tum.de/Mediasite/*
 // @include     https://streams.tum.de/Mediasite/*
 // @version     1
-// @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
 // @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @grant    GM_addStyle
 // ==/UserScript==
