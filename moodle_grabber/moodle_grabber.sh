@@ -1,7 +1,14 @@
 #!/bin/bash
 
-read -p "Login (e.g. go42) " USER
-read -p "Password (e.g. xD): " PASS
+printf "Login (e.g. go42): "
+read USER
+
+printf "Password: "
+read -s PASS
+
+printf "\n\n"
+
+
 
 
 FILE=links.txt
