@@ -15,9 +15,9 @@ Enables the download button at TUM mediasite (if disabled by default)
 
 ## moodle-grabber
 
-![moodle-grabber in action](pics/grabber_example.png)
+Let you download a list of files (names links.txt) using your console.
 
-Let you download a list of files using your console
+![moodle-grabber in action](pics/grabber_example.png)
 
 1. Make a list of files on moodle -> save as links.txt
 2. Run ./moodle_grabber.sh
