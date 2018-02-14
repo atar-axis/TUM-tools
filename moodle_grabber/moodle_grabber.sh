@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read -p "Login (e.g. go42) " USER
 read -p "Password (e.g. xD): " PASS
 
