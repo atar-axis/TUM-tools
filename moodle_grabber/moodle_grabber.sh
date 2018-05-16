@@ -3,6 +3,7 @@
 # SETTINGS
 
 DL_DIR=dl
+EXTRACT_DIR=extracted
 TMP_DIR=tmp
 FILE=links.txt
 
@@ -27,6 +28,7 @@ echo -e "\n---"
 mkdir -p $TMP_DIR
 rm -rf $TMP_DIR/*
 mkdir -p $DL_DIR
+mkdir -p $EXTRACT_DIR
 
 ## LOGIN
 
@@ -106,7 +108,7 @@ wget $WGET_OPTIONS_LOGIN \
 ### Download files from linklist
 
 if grep -q "Meine Startseite" "./$TMP_DIR/my_check.txt"; then
-    echo "* ok"
+    echo "ok"
   
     echo "* downloading files... "
     # Now we can do whatever we want
@@ -114,18 +116,26 @@ if grep -q "Meine Startseite" "./$TMP_DIR/my_check.txt"; then
     --load-cookies=./$TMP_DIR/cookie.txt \
     --save-cookies=./$TMP_DIR/cookie.txt \
     --keep-session-cookies \
-    --header="Referer: Referer: https://tumidp.lrz.de/idp/profile/SAML2/Redirect/SSO?execution=e1s1" \
-    --directory-prefix=$DL_DIR \
-    --continue \
+    --referer="https://tumidp.lrz.de/idp/profile/SAML2/Redirect/SSO?execution=e1s1" \
+    --directory-prefix=$DL_DIR     `# directory where we want to store the downloaded files` \
+    --continue                     `# continue if download was aborted last time` \
+    --force-directories            `# do create subfolders to avoid overwriting files using the same name` \
+    --no-host-directories          `# do not create subfolger moodle.tum.de` \
+    --content-disposition          `# listen to renaming suggested by server` \
     -i $FILE
-    
-    #TODO: wget Ausgabe einrücken mit?:  | sed 's/^/  /g'
     
     echo "done"
     
 else
     echo "failed"
 fi
+
+
+
+TYPE=
+echo "extract files of type (pdf, jpg, ...)?"
+read TYPE
+find ./$DL_DIR -iname "*.$TYPE" -print0 | xargs -0 mv -t ./$EXTRACT_DIR
 
 
 
