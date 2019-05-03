@@ -2,6 +2,14 @@
 
 Some quick 'n dirty tools for TUM students
 
+## dual play
+
+A script that let you run two video files simultanously (slides, video).
+Put the lecture recordings in folders called called somthing like `001`, `002`, ...
+
+## nup
+
+Converts slides to 2x2 landscape with a border for the punchers holes.
 
 ## mediasite-download-enabler
 
