@@ -1,0 +1,1 @@
+lpr -o orientation-requested=4 -o fit-to-page -o number-up=4 -o number-up-layout=lrtb X.pdf -P PDF 

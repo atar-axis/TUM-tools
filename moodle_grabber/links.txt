@@ -1,1 +1,13 @@
-https://www.moodle.tum.de/theme/image.php/tum_boost/mod_forum/1512112233/icon
+https://www.moodle.tum.de/mod/resource/view.php?id=765546
+https://www.moodle.tum.de/mod/resource/view.php?id=765615
+https://www.moodle.tum.de/mod/resource/view.php?id=765616
+https://www.moodle.tum.de/mod/resource/view.php?id=765617
+https://www.moodle.tum.de/mod/resource/view.php?id=765619
+https://www.moodle.tum.de/mod/resource/view.php?id=765620
+https://www.moodle.tum.de/mod/resource/view.php?id=765772
+https://www.moodle.tum.de/mod/resource/view.php?id=765773
+https://www.moodle.tum.de/mod/resource/view.php?id=765775
+https://www.moodle.tum.de/mod/resource/view.php?id=765776
+https://www.moodle.tum.de/mod/resource/view.php?id=773023
+https://www.moodle.tum.de/mod/resource/view.php?id=773024
+
