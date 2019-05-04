@@ -19,6 +19,8 @@ Enables the download button at TUM mediasite (if disabled by default)
 
 ## mediasite-sync-playback
 
+![mediasite-sync-playback in action](pics/dual.gif)
+
 Helps to playback the slides-video and the camera-recording synchronously using vlc.star
 
 1. Download each lectures video files into a separate folder (like the 001/ one)
