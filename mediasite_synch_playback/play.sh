@@ -12,11 +12,17 @@ shopt -u nullglob
 j=0
 for i in "${folders[@]}"
 do
-   if [ "$i" != "_SEEN/" ] && [ "$i" != "_SKIPPED/" ]; then
+   if [ "${i:0:1}" != "_" ]; then
     echo "[$j] $i"
     ((j++))
    fi
 done
+
+
+if [[ "$j" == 0 ]]; then
+    echo "none."
+    exit 0;
+fi
 
 read -e -p "choose: " -i "0" sel_folder
 sel_folder=${sel_folder:-"0"}
