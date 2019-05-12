@@ -101,6 +101,27 @@ function modify (i) {
                         }
                     }
 
+
+                    // TODO: Slides
+
+                    if (response.d.Presentation.Streams[k].Slides.length != 0) {
+
+                        var base_url = response.d.Presentation.Streams[k].SlideBaseUrl;
+                        var img_template = response.d.Presentation.Streams[k].SlideImageFileNameTemplate;
+                        var ticketId = response.d.Presentation.Streams[k].SlidePlaybackTicketId;
+
+
+                        for(var l = 0; l < response.d.Presentation.Streams[k].Slides.length; l++){
+
+                            var img_no = ("0000" + response.d.Presentation.Streams[k].Slides[l].Number).slice (-4);
+                            var img_name = img_template.replace('{0:D4}', img_no);
+
+                            console.log(base_url+img_name+"?playbackTicket="+ticketId);
+
+                        }
+
+                    }
+
                     //break;
                 }
 
@@ -109,8 +130,7 @@ function modify (i) {
                 for(var l = 0; l < vid_location.length; l++){
                     placeButton(panels[i], vid_location[l], "Download "+l);
                 }
-                
-                
+
                 // Rufe diese Funktion erneut für den nächsten Eintrag auf.
                 modify(++i);
 
@@ -136,7 +156,7 @@ function create_downloads(){
     var dwn_creator = document.createElement('a');
     dwn_creator.id = 'Create_Downloads';
     dwn_creator.className = 'myButton';
-    dwn_creator.onclick = function(){ 
+    dwn_creator.onclick = function(){
 
         if(document.querySelector('#SearchResults').getAttribute('data-wasActive') === null){
             //alert("call modify");
